@@ -5,8 +5,6 @@ import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import rehypeStringify from "rehype-stringify";
 
-import "katex/dist/katex.min.css";
-
 const markdown = `
 Pretty neat, eh?
 
@@ -64,8 +62,32 @@ Here is an example of a plugin in action
 
 Here is an example of a plugin to highlight code:
 [rehype-highlight](https://github.com/rehypejs/rehype-highlight).
+~~~js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Markdown from 'react-markdown'
+import MyFancyRule from './components/my-fancy-rule.js'
 
+ReactDOM.render(
+  <Markdown
+    components={{
+      // Use h2s instead of h1s
+      h1: 'h2',
+      // Use a component instead of hrs
+      hr(props) {
+        const {node, ...rest} = props
+        return <MyFancyRule {...rest} />
+      }
+    }}
+  >
+    {markdown}
+  </Markdown>,
+  document.querySelector('#content')
+)
+~~~
+`;
 
+const math = `
 $$
 L = \\frac{1}{2} \\rho v^2 S C_L
 $$
@@ -83,15 +105,17 @@ m = m - \\frac{d_{mse}}{d_m} * lr \\newline
 c = c - \\frac{d_{mse}}{d_c} * lr 
 $$
 
+Lift($$L$$) can be determined by Lift Coefficient ($$C_L$$) like the following
+equation.
 `;
 
 const AIMessage = () => {
   return (
     <div className="px-8 w-full">
       <Markdown
-        className="prose text-white"
+        className="w-full prose text-white prose-headings:text-white prose-p:text-white prose-a:text-blue-400 prose-strong:text-white prose-code:text-white !max-w-none"
         remarkPlugins={[remarkMath, remarkGfm, remarkParse]}
-        rehypePlugins={[rehypeKatex, rehypeStringify]}
+        rehypePlugins={[rehypeKatex]}
       >
         {markdown}
       </Markdown>

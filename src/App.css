@@ -1,3 +1,5 @@
+@import "katex/dist/katex.min.css";
+
 /* custom.css */
 .scrollbar-custom::-webkit-scrollbar {
     width: 8px;
@@ -11,10 +13,3 @@
     /* For Firefox */
 }
 
-.prose {
-    margin-bottom: 0 !important;
-}
-
-.katex-display {
-    margin-bottom: 0 !important;
-}
