@@ -1,5 +1,5 @@
 import "./App.css";
-import ChatLayout from "./components/ChatLayout";
+import ChatLayout from "./components/chat/ChatLayout";
 
 const App = () => {
   return (

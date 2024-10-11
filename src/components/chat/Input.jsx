@@ -3,9 +3,10 @@ import { PaperPlaneIcon } from "@radix-ui/react-icons";
 
 const Input = () => {
   return (
-    <div className="w-full max-w-3xl px-2 relative">
+    <div className="w-full px-2 relative">
       <textarea
         rows={2}
+        maxLength={600}
         className="bg-gray-700/65 pl-3 pr-9 py-2 w-full rounded-lg text-gray-300 focus:outline-none"
         type="text"
         required
