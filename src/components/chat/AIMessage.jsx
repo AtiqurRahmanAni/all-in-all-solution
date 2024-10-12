@@ -4,6 +4,7 @@ import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import rehypeStringify from "rehype-stringify";
+import useChatStore from "../../hooks/useChatStore";
 
 const markdown = `
 Pretty neat, eh?
@@ -110,6 +111,8 @@ equation.
 `;
 
 const AIMessage = () => {
+  const aiMessage = useChatStore((state) => state.aiMessage);
+
   return (
     <div className="px-8 w-full">
       <Markdown
@@ -117,7 +120,7 @@ const AIMessage = () => {
         remarkPlugins={[remarkMath, remarkGfm, remarkParse]}
         rehypePlugins={[rehypeKatex]}
       >
-        {markdown}
+        {math}
       </Markdown>
     </div>
   );
