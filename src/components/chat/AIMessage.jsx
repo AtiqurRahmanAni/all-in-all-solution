@@ -120,7 +120,7 @@ const AIMessage = () => {
         remarkPlugins={[remarkMath, remarkGfm, remarkParse]}
         rehypePlugins={[rehypeKatex]}
       >
-        {math}
+        {markdown}
       </Markdown>
     </div>
   );
